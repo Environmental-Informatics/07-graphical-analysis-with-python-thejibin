@@ -9,7 +9,7 @@ This program reads the earthquake data contained in a csv file for the data "30 
 using pandas dataframe
 Further, a Graphical Analysis with Python is performed on the data
 
-Revision 03 : 2020-04-18
+Revision 02-2020-04-18
 Modified to add comments
 """
 
@@ -48,8 +48,9 @@ eq_data['mag'].plot(kind='kde')
 ax2=ax1.twinx() ## Create a second axes that share the same x-axis
 ax2.set_ylabel("Frequency",fontsize=15)
 eq_data['mag'].plot(kind='hist',bins=range(range_start,range_end+1,binwidth))
-plt.title("KDE Plot of Earthquake Magnitude\n(kernel width= scott & binwidth="+str(binwidth)+
-                                                     ",  range= full)",fontsize=15)
+plt.title("KDE Plot of Earthquake Magnitude with Histogram\n\
+          (kernel width= scott, kernel = Gaussian)\n \
+          (hist binwidth="+str(binwidth)+", range= full)",fontsize=15)
 fig.tight_layout()
 plt.savefig("02_KDEPlot.png")
 plt.close('all')
@@ -92,12 +93,14 @@ plt.legend(loc='lower right',frameon=True,fontsize=10)
 plt.savefig("05_Scatter_Depth_Magnitude.png")
 plt.close(5)
 
-
-## Generate a quantile or Q-Q plot of the earthquake magnitudes.
-eq_data2=eq_data[eq_data['mag']>0]## Create a subset of eq data with mag >0
+## Create a subset of eq data with mag >0
+eq_data2=eq_data[eq_data['mag']>0]
 #print(eq_data2)
 #print("MIN",eq_data2['mag'].min())
 #print("MAX",eq_data2['mag'].max())
+
+## Generate a quantile or Q-Q plot of the earthquake magnitudes.
+## Create 6 subplots with different distributions
 plt.figure(6,figsize=(8.27,11.69))
 plt.subplot(321)
 stats.probplot(eq_data2['mag'].dropna().values,dist="uniform",plot=plt)
@@ -138,7 +141,6 @@ plt.subplots_adjust(hspace=0.5)
 plt.suptitle("QQ Plot of Earthquake Magnitude\n(Assuming Different Distribution)",fontsize=18)
 plt.savefig("06_QQ_Plot_Magnitude.png")
 plt.close(5)
-
 
 """
 ## Effect of binwidth and range
