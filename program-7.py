@@ -9,7 +9,7 @@ This program reads the earthquake data contained in a csv file for the data "30 
 using pandas dataframe
 Further, a Graphical Analysis with Python is performed on the data
 
-Revision 02-2020-04-18
+Revision 03 : 2020-04-18
 Modified to add comments
 """
 
@@ -138,9 +138,9 @@ plt.subplots_adjust(hspace=0.5)
 plt.suptitle("QQ Plot of Earthquake Magnitude\n(Assuming Different Distribution)",fontsize=18)
 plt.savefig("06_QQ_Plot_Magnitude.png")
 plt.close(5)
-#print("Completed"
 
 
+"""
 ## Effect of binwidth and range
 plt.figure(10)
 plt.subplot(121)
@@ -171,4 +171,4 @@ plt.xticks(range(range_start,range_end+1,binwidth),fontsize=8)
 plt.subplots_adjust(wspace=0.5)
 plt.savefig("01_Histogram_binwdith.png")
 plt.close(10)
-
+"""
